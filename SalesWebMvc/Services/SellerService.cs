@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SalesWebMvc.Data;
 using SalesWebMvc.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace SalesWebMvc.Services
 {
@@ -24,12 +25,14 @@ namespace SalesWebMvc.Services
         public void Insert(Seller obj)
         {
             _context.Add(obj);
-            _context.SaveChanges(); // usado para salvar o obj no banco de dados!
+            _context.SaveChanges(); // usado para salvar alterações no DB
         }
 
         public Seller FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(obj => obj.Id == id);
+            //necessário usar using Microsoft.EntityFrameworkCore; para poder instanciar o Include().
+            //usando o Include() para dar um join nas tabelas
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(obj => obj.Id == id);
         }
 
         public void Remove(int id)
