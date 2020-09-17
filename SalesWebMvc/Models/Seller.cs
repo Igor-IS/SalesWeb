@@ -1,16 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace SalesWebMvc.Models
 {
     public class Seller
     {
+        //para customizar os labels da aplicação, requer import using System.ComponentModel.DataAnnotations;
         public int Id { get; set; }
         public string Name { get; set; }
+
+        [DataType(DataType.EmailAddress)] // modificador de tipos
         public string Email { get; set; }
+
+        [Display(Name = "Birth Date")]
+        [DataType(DataType.Date)] // modificador de tipos
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")] // formatador de dados exibidos
         public DateTime BirthDate { get; set; }
+
+        [Display(Name = "Base Salary")]
+        [DisplayFormat(DataFormatString = "{0:F2}")] // formatador de dados exibidos
         public double BaseSalary { get; set; }
         public Department Department { get; set; }
         public int DepartmentId { get; set; }
