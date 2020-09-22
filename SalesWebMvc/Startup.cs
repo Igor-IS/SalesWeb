@@ -51,7 +51,7 @@ namespace SalesWebMvc
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
 
-            //configuração de local v.. requer o uso using Microsoft.AspNetCore.Localization;
+            //configuração de local v   requer  using Microsoft.AspNetCore.Localization;
             var enUS = new CultureInfo("en-US");
             var localizationOptions = new RequestLocalizationOptions
             {
@@ -59,7 +59,7 @@ namespace SalesWebMvc
                 SupportedCultures = new List<CultureInfo> { enUS },
                 SupportedUICultures = new List<CultureInfo> { enUS }
             };
-            app.UseRequestLocalization(localizationOptions);
+            app.UseRequestLocalization(localizationOptions); // esse method usa as configurações acima!
             //Configuração de local ^
 
             if (env.IsDevelopment())

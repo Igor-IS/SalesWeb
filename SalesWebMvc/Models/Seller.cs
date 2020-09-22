@@ -10,16 +10,24 @@ namespace SalesWebMvc.Models
     {
         //para customizar os labels da aplicação, requer import using System.ComponentModel.DataAnnotations;
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "{0} required")] // Required impoe obrigadoriedade no campo Name!
+        [StringLength(60, MinimumLength = 3, ErrorMessage = "{0} size must be between 3 and 60")]
         public string Name { get; set; }
 
+        [Required(ErrorMessage = "{0} required")]
+        [EmailAddress(ErrorMessage = "Enter a valid email")]
         [DataType(DataType.EmailAddress)] // modificador de tipos
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "{0} required")]
         [Display(Name = "Birth Date")]
         [DataType(DataType.Date)] // modificador de tipos
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")] // formatador de dados exibidos
         public DateTime BirthDate { get; set; }
 
+        [Required(ErrorMessage = "{0} required")]
+        [Range(100.0, 100000.0, ErrorMessage = "{0} must be from {1} to {2} ")]
         [Display(Name = "Base Salary")]
         [DisplayFormat(DataFormatString = "{0:F2}")] // formatador de dados exibidos
         public double BaseSalary { get; set; }
