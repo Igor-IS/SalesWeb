@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using SalesWebMvc.Models.Enums;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace SalesWebMvc.Models
 {
@@ -22,6 +23,7 @@ namespace SalesWebMvc.Models
 
         public SalesRecord()
         {
+
         }
 
 
@@ -33,6 +35,5 @@ namespace SalesWebMvc.Models
             Status = status;
             Seller = seller;
         }
-
-    }
+    }   
 }
